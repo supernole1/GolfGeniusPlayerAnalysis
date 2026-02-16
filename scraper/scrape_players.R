@@ -113,12 +113,55 @@ tryCatch({
   if (nrow(player_urls) == 0) stop("No player links found")
 
   # Step 5: Visit each player's detail page and extract purse + rounds
+  # Helper function to scrape one player detail page
+  scrape_player <- function(purl, wait = 2) {
+    b$Page$navigate(purl)
+    Sys.sleep(wait)
+
+    detail <- b$Runtime$evaluate("
+      (function() {
+        var text = document.body.innerText;
+        var purse = '';
+        var rounds = '';
+        var name = '';
+
+        // Detect rate limiting / error pages
+        if (text.match(/retry|error|forbidden|not found/i) && !text.match(/Purse:/)) {
+          return JSON.stringify({error: true, raw: text.substring(0, 200)});
+        }
+
+        // Extract purse amount
+        var purseMatch = text.match(/Purse:\\s*\\$([\\d,]+\\.?\\d*)/);
+        if (purseMatch) purse = purseMatch[1];
+
+        // Extract rounds played
+        var roundsMatch = text.match(/Rounds\\s*Played:\\s*(\\d+)/);
+        if (roundsMatch) rounds = roundsMatch[1];
+
+        // Extract full name from header
+        var lines = text.split('\\n');
+        for (var j = 0; j < lines.length; j++) {
+          var line = lines[j].trim();
+          if (line.length > 2 && !line.match(/^(Back|Print|Low|Purse|Round|Handicap|Detail|Summary|Comparison|Hole|Gross)/)) {
+            name = line;
+            break;
+          }
+        }
+
+        return JSON.stringify({error: false, name: name, purse: purse, rounds: rounds});
+      })()
+    ")$result$value
+
+    fromJSON(detail)
+  }
+
   players <- data.frame(
     name = character(0),
     money = numeric(0),
     rounds_played = integer(0),
     stringsAsFactors = FALSE
   )
+  failed <- list()  # Track failed players for retry
 
   total <- nrow(player_urls)
   for (i in seq_len(total)) {
@@ -128,68 +171,80 @@ tryCatch({
     cat(sprintf("  [%d/%d] %s ... ", i, total, pname))
 
     tryCatch({
-      b$Page$navigate(purl)
-      Sys.sleep(2)
+      info <- scrape_player(purl, wait = 2)
 
-      detail <- b$Runtime$evaluate("
-        (function() {
-          var text = document.body.innerText;
-          var purse = '';
-          var rounds = '';
-          var name = '';
+      if (isTRUE(info$error)) {
+        cat("RATE LIMITED - queued for retry\n")
+        failed[[length(failed) + 1]] <- list(name = pname, url = purl)
+        next
+      }
 
-          // Extract purse amount
-          var purseMatch = text.match(/Purse:\\s*\\$([\\d,]+\\.?\\d*)/);
-          if (purseMatch) purse = purseMatch[1];
-
-          // Extract rounds played
-          var roundsMatch = text.match(/Rounds\\s*Played:\\s*(\\d+)/);
-          if (roundsMatch) rounds = roundsMatch[1];
-
-          // Extract full name from header
-          var lines = text.split('\\n');
-          for (var j = 0; j < lines.length; j++) {
-            var line = lines[j].trim();
-            if (line.length > 2 && !line.match(/^(Back|Print|Low|Purse|Round|Handicap|Detail|Summary|Comparison|Hole|Gross)/)) {
-              name = line;
-              break;
-            }
-          }
-
-          return JSON.stringify({name: name, purse: purse, rounds: rounds});
-        })()
-      ")$result$value
-
-      info <- fromJSON(detail)
       money <- as.numeric(gsub("[^0-9.]", "", info$purse))
       rounds <- as.integer(info$rounds)
       full_name <- if (nchar(info$name) > 0) info$name else pname
-
       if (is.na(money)) money <- 0
       if (is.na(rounds)) rounds <- 0L
 
       players <- rbind(players, data.frame(
-        name = full_name,
-        money = money,
-        rounds_played = rounds,
+        name = full_name, money = money, rounds_played = rounds,
         stringsAsFactors = FALSE
       ))
-
       cat(sprintf("$%.2f (%d rounds)\n", money, rounds))
 
     }, error = function(e) {
-      cat("ERROR:", conditionMessage(e), "\n")
-      players <<- rbind(players, data.frame(
-        name = pname,
-        money = 0,
-        rounds_played = 0L,
-        stringsAsFactors = FALSE
-      ))
+      cat("ERROR - queued for retry\n")
+      failed[[length(failed) + 1]] <<- list(name = pname, url = purl)
     })
   }
 
-  # Remove failed entries (e.g. "Retry later" from rate limiting)
-  players <- players[!grepl("^Retry", players$name, ignore.case = TRUE), ]
+  # Retry failed players with longer delays (up to 3 attempts)
+  if (length(failed) > 0) {
+    cat(sprintf("\n--- Retrying %d failed players (longer delays) ---\n", length(failed)))
+
+    for (attempt in 1:3) {
+      if (length(failed) == 0) break
+      cat(sprintf("\n  Retry attempt %d (%d remaining)...\n", attempt, length(failed)))
+      Sys.sleep(10)  # Pause before retry batch
+
+      still_failed <- list()
+      for (f in failed) {
+        cat(sprintf("  [retry] %s ... ", f$name))
+
+        tryCatch({
+          info <- scrape_player(f$url, wait = 5)
+
+          if (isTRUE(info$error)) {
+            cat("still failing\n")
+            still_failed[[length(still_failed) + 1]] <- f
+            next
+          }
+
+          money <- as.numeric(gsub("[^0-9.]", "", info$purse))
+          rounds <- as.integer(info$rounds)
+          full_name <- if (nchar(info$name) > 0) info$name else f$name
+          if (is.na(money)) money <- 0
+          if (is.na(rounds)) rounds <- 0L
+
+          players <- rbind(players, data.frame(
+            name = full_name, money = money, rounds_played = rounds,
+            stringsAsFactors = FALSE
+          ))
+          cat(sprintf("$%.2f (%d rounds)\n", money, rounds))
+
+        }, error = function(e) {
+          cat("ERROR\n")
+          still_failed[[length(still_failed) + 1]] <<- f
+        })
+      }
+      failed <- still_failed
+    }
+
+    # Report any players that still failed after all retries
+    if (length(failed) > 0) {
+      cat(sprintf("\nWARNING: %d players failed after all retries:\n", length(failed)))
+      for (f in failed) cat("  -", f$name, "\n")
+    }
+  }
 
   # Add purse entered column
   players$purse_entered <- players$rounds_played * PURSE_PER_ROUND
