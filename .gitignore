@@ -1,0 +1,7 @@
+.Rhistory
+.RData
+.Rproj.user/
+debug_*.png
+debug_*.txt
+.vscode/
+.idea/

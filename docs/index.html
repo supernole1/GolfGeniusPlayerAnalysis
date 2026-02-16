@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GolfGenius Player Analysis</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <h1>GolfGenius Player Analysis</h1>
+        <div class="ggid-display">
+            <label for="ggid-input">GGID:</label>
+            <input type="text" id="ggid-input" value="RUMBLERS" readonly>
+        </div>
+    </header>
+
+    <main>
+        <div class="summary-cards">
+            <div class="card">
+                <div class="card-value" id="player-count">--</div>
+                <div class="card-label">Players</div>
+            </div>
+            <div class="card">
+                <div class="card-value" id="total-purse">--</div>
+                <div class="card-label">Total Money Won</div>
+            </div>
+            <div class="card">
+                <div class="card-value" id="avg-per-player">--</div>
+                <div class="card-label">Avg per Player</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <input type="text" id="search-input" placeholder="Search players...">
+            <button id="update-btn" class="update-btn" title="Run the scraper to refresh data">Update Standings</button>
+        </div>
+        <div class="data-info" id="data-info"></div>
+
+        <div id="error" class="status-message error" style="display:none;"></div>
+        <div id="empty" class="status-message" style="display:none;">No players found.</div>
+
+        <div class="table-container">
+            <table id="player-table">
+                <thead>
+                    <tr>
+                        <th data-sort="rank" class="sortable"># <span class="sort-arrow"></span></th>
+                        <th data-sort="name" class="sortable">Player <span class="sort-arrow"></span></th>
+                        <th data-sort="money" class="sortable">Money Won <span class="sort-arrow"></span></th>
+                        <th data-sort="rounds_played" class="sortable">Rounds <span class="sort-arrow"></span></th>
+                        <th data-sort="purse_entered" class="sortable">Purse Entered <span class="sort-arrow"></span></th>
+                        <th data-sort="net" class="sortable">Net <span class="sort-arrow"></span></th>
+                    </tr>
+                </thead>
+                <tbody id="player-tbody">
+                </tbody>
+            </table>
+        </div>
+    </main>
+
+    <footer>
+        <p>Data sourced from <a href="https://www.golfgenius.com/ggid/RUMBLERS" target="_blank" rel="noopener">GolfGenius</a></p>
+    </footer>
+
+    <script src="data/data.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
