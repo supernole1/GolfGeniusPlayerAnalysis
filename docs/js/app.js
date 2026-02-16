@@ -111,15 +111,114 @@
         $('#search-input').addEventListener('input', filterAndRender);
     }
 
+    const GITHUB_OWNER = 'supernole1';
+    const GITHUB_REPO = 'GolfGeniusPlayerAnalysis';
+    const WORKFLOW_FILE = 'update-standings.yml';
+
+    function getToken() {
+        return localStorage.getItem('gh_pat') || null;
+    }
+
     function setupUpdateButton() {
-        $('#update-btn').addEventListener('click', () => {
-            alert(
-                'To update standings:\n\n' +
-                '1. Double-click update_data.bat in the project folder\n' +
-                '   - OR run: Rscript scraper/scrape_players.R\n\n' +
-                '2. Refresh this page to see new data.'
-            );
+        const btn = $('#update-btn');
+
+        btn.addEventListener('click', async () => {
+            let token = getToken();
+
+            if (!token) {
+                token = prompt(
+                    'First-time setup: enter a GitHub Personal Access Token\n' +
+                    'with "Actions (write)" permission.\n\n' +
+                    'Create one at: github.com/settings/tokens\n\n' +
+                    'This is saved in your browser only — never sent anywhere else.'
+                );
+                if (!token || !token.trim()) return;
+                token = token.trim();
+                localStorage.setItem('gh_pat', token);
+            }
+
+            btn.disabled = true;
+            btn.textContent = 'Triggering...';
+
+            try {
+                const resp = await fetch(
+                    `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/workflows/${WORKFLOW_FILE}/dispatches`,
+                    {
+                        method: 'POST',
+                        headers: {
+                            'Authorization': `Bearer ${token}`,
+                            'Accept': 'application/vnd.github.v3+json'
+                        },
+                        body: JSON.stringify({ ref: 'master' })
+                    }
+                );
+
+                if (resp.status === 204) {
+                    btn.textContent = 'Scraping...';
+                    pollWorkflow(token, btn);
+                } else if (resp.status === 401 || resp.status === 403) {
+                    localStorage.removeItem('gh_pat');
+                    alert('Token is invalid or expired. Click the button again to enter a new one.');
+                    btn.disabled = false;
+                    btn.textContent = 'Update Standings';
+                } else {
+                    const body = await resp.text();
+                    alert('Failed to trigger update: ' + resp.status + '\n' + body);
+                    btn.disabled = false;
+                    btn.textContent = 'Update Standings';
+                }
+            } catch (err) {
+                alert('Network error: ' + err.message);
+                btn.disabled = false;
+                btn.textContent = 'Update Standings';
+            }
         });
+    }
+
+    async function pollWorkflow(token, btn) {
+        const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/runs?per_page=1&event=workflow_dispatch`;
+        const headers = {
+            'Authorization': `Bearer ${token}`,
+            'Accept': 'application/vnd.github.v3+json'
+        };
+
+        let attempts = 0;
+        const maxAttempts = 60; // 10 minutes max
+
+        const poll = setInterval(async () => {
+            attempts++;
+            try {
+                const resp = await fetch(url, { headers });
+                const data = await resp.json();
+                const run = data.workflow_runs && data.workflow_runs[0];
+
+                if (!run) return;
+
+                const status = run.status;
+                const conclusion = run.conclusion;
+
+                if (status === 'completed') {
+                    clearInterval(poll);
+                    if (conclusion === 'success') {
+                        btn.textContent = 'Done! Reloading...';
+                        setTimeout(() => window.location.reload(), 2000);
+                    } else {
+                        btn.textContent = 'Update Standings';
+                        btn.disabled = false;
+                        alert('Scraper finished with status: ' + conclusion + '\nCheck the Actions tab on GitHub for details.');
+                    }
+                } else {
+                    btn.textContent = 'Scraping... (' + Math.floor(attempts * 10 / 60) + 'm)';
+                }
+            } catch (e) { /* ignore poll errors */ }
+
+            if (attempts >= maxAttempts) {
+                clearInterval(poll);
+                btn.textContent = 'Update Standings';
+                btn.disabled = false;
+                alert('Timed out waiting for scraper. Check the Actions tab on GitHub.');
+            }
+        }, 10000); // poll every 10 seconds
     }
 
     function loadData() {

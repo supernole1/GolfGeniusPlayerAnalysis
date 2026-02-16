@@ -22,7 +22,7 @@ Scrapes player purse/money data from the GolfGenius RUMBLERS league and displays
 - **Stealth settings required**:
   - `Network.setUserAgentOverride` with a real Chrome UA string
   - `Object.defineProperty(navigator, 'webdriver', {get: () => undefined})`
-- **Rate limiting**: ~11 out of 110 players got "Retry later" responses when scraping too fast (2s delay between requests). These are filtered out automatically.
+- **Rate limiting**: ~11-19 out of 110 players get "Retry later" responses on first pass. Scraper has retry logic (up to 3 attempts with 10s pauses + 5s/page delays) that recovers all of them.
 
 ## Scraping Flow
 1. Navigate to `/ggid/RUMBLERS` → page redirects to `/pages/11870953005966707194`
@@ -44,12 +44,23 @@ Scrapes player purse/money data from the GolfGenius RUMBLERS league and displays
 - Sortable table: #, Player, Money Won, Rounds, Purse Entered, Net
 - Net column: green if positive, red if negative
 - Live search/filter by player name
-- "Update Standings" button (shows instructions to run scraper)
+- "Update Standings" button triggers GitHub Actions workflow via API (PAT stored in browser localStorage)
 - Augusta green (#1a472a) + gold (#d4a843) color scheme
+
+## GitHub Actions
+- Workflow: `.github/workflows/update-standings.yml`
+- Trigger: `workflow_dispatch` (manual via API or GitHub UI)
+- The "Update Standings" button in the web app calls `POST /repos/supernole1/GolfGeniusPlayerAnalysis/actions/workflows/update-standings.yml/dispatches`
+- Requires a GitHub PAT with `actions:write` permission — stored in the user's browser localStorage (key: `gh_pat`), never in the repo
+- After triggering, the button polls the workflow status every 10s and auto-reloads when complete
+- The workflow: installs R + chromote + Chrome on Ubuntu, runs the scraper, commits + pushes updated data.js
+- GitHub Pages auto-redeploys after the push
 
 ## File Structure
 ```
 GolfGeniusPlayerAnalysis/
+├── .github/workflows/
+│   └── update-standings.yml   # GitHub Actions: run scraper + commit
 ├── scraper/
 │   ├── scrape_players.R       # Main scraper (R + chromote)
 │   └── explore.R              # Debug/exploration script
@@ -58,13 +69,15 @@ GolfGeniusPlayerAnalysis/
 │   ├── css/styles.css
 │   ├── js/app.js
 │   └── data/data.js           # Scraped data as JS const
-├── update_data.bat            # One-click: run scraper
+├── update_data.bat            # One-click: run scraper locally
 ├── CLAUDE.md                  # This file
 ├── README.md
 └── .gitignore
 ```
 
 ## Common Tasks
-- **Update data**: `Rscript scraper/scrape_players.R` or double-click `update_data.bat`
-- **View app**: Open `docs/index.html` in browser (no server needed)
+- **Update data (from web app)**: Click "Update Standings" button (needs GitHub PAT on first use)
+- **Update data (local)**: `Rscript scraper/scrape_players.R` or double-click `update_data.bat`
+- **View app**: Open `docs/index.html` or visit `https://supernole1.github.io/GolfGeniusPlayerAnalysis/`
 - **Debug scraping**: Check `scraper/debug_*.txt` and `scraper/debug_*.png` files
+- **GitHub CLI**: installed at `C:\Program Files\GitHub CLI\gh.exe` (not on MSYS PATH, use full path)
