@@ -20,20 +20,35 @@ jobs:
         with:
           r-version: "release"
 
-      - name: Install system dependencies (Chrome)
+      - name: Install system dependencies
         run: |
           sudo apt-get update
-          sudo apt-get install -y google-chrome-stable || true
-          # Fallback: install chromium if Chrome not available
-          which google-chrome || sudo apt-get install -y chromium-browser
+          sudo apt-get install -y \
+            libcurl4-openssl-dev \
+            libssl-dev \
+            libxml2-dev \
+            libfontconfig1-dev \
+            libharfbuzz-dev \
+            libfribidi-dev \
+            libfreetype6-dev \
+            libpng-dev \
+            libtiff5-dev \
+            libjpeg-dev
+          # Install Chrome
+          wget -q https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
+          sudo dpkg -i google-chrome-stable_current_amd64.deb || sudo apt-get install -yf
 
       - name: Install R packages
         run: |
-          Rscript -e 'install.packages(c("chromote", "jsonlite"), repos = "https://cloud.r-project.org")'
+          Rscript -e 'install.packages(c("chromote", "jsonlite", "websocket", "processx", "later", "promises", "curl", "httpuv"), repos = "https://cloud.r-project.org", dependencies = TRUE)'
+
+      - name: Verify R packages
+        run: |
+          Rscript -e 'library(chromote); library(jsonlite); cat("All packages loaded OK\n")'
 
       - name: Run scraper
         env:
-          CHROMOTE_CHROME: google-chrome
+          CHROMOTE_CHROME: /usr/bin/google-chrome
         run: |
           Rscript scraper/scrape_players.R
 

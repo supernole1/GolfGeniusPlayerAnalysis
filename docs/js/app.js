@@ -177,12 +177,13 @@
 
     // Workflow step names from update-standings.yml and estimated durations (seconds)
     const WORKFLOW_STEPS = [
-        { name: 'Checkout repo', label: 'Starting up', duration: 5 },
-        { name: 'Setup R', label: 'Installing R', duration: 90 },
-        { name: 'Install system dependencies (Chrome)', label: 'Installing Chrome', duration: 30 },
-        { name: 'Install R packages', label: 'Installing packages', duration: 60 },
-        { name: 'Run scraper', label: 'Scraping players', duration: 300 },
-        { name: 'Commit and push updated data', label: 'Saving data', duration: 10 }
+        { name: 'Checkout repo', label: 'Starting up' },
+        { name: 'Setup R', label: 'Installing R' },
+        { name: 'Install system dependencies', label: 'Installing Chrome' },
+        { name: 'Install R packages', label: 'Installing packages' },
+        { name: 'Verify R packages', label: 'Verifying setup' },
+        { name: 'Run scraper', label: 'Scraping players' },
+        { name: 'Commit and push updated data', label: 'Saving data' }
     ];
     const TOTAL_PLAYERS = 110;
     const SCRAPE_STEP_NAME = 'Run scraper';
