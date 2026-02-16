@@ -175,42 +175,99 @@
         });
     }
 
+    // Workflow step names from update-standings.yml and estimated durations (seconds)
+    const WORKFLOW_STEPS = [
+        { name: 'Checkout repo', label: 'Starting up', duration: 5 },
+        { name: 'Setup R', label: 'Installing R', duration: 90 },
+        { name: 'Install system dependencies (Chrome)', label: 'Installing Chrome', duration: 30 },
+        { name: 'Install R packages', label: 'Installing packages', duration: 60 },
+        { name: 'Run scraper', label: 'Scraping players', duration: 300 },
+        { name: 'Commit and push updated data', label: 'Saving data', duration: 10 }
+    ];
+    const TOTAL_PLAYERS = 110;
+    const SCRAPE_STEP_NAME = 'Run scraper';
+    // Estimated seconds from scraper start until player scraping begins (nav + iframe)
+    const SCRAPE_OVERHEAD = 30;
+    // Estimated seconds per player (including retries amortized)
+    const SECS_PER_PLAYER = 2.5;
+
     async function pollWorkflow(token, btn) {
-        const url = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/runs?per_page=1&event=workflow_dispatch`;
+        const runsUrl = `https://api.github.com/repos/${GITHUB_OWNER}/${GITHUB_REPO}/actions/runs?per_page=1&event=workflow_dispatch`;
         const headers = {
             'Authorization': `Bearer ${token}`,
             'Accept': 'application/vnd.github.v3+json'
         };
 
         let attempts = 0;
-        const maxAttempts = 60; // 10 minutes max
+        const maxAttempts = 90; // 15 minutes max
+        const startTime = Date.now();
 
         const poll = setInterval(async () => {
             attempts++;
+            const elapsed = Math.floor((Date.now() - startTime) / 1000);
+            const elapsedMin = Math.floor(elapsed / 60);
+            const elapsedSec = elapsed % 60;
+            const timeStr = elapsedMin + ':' + String(elapsedSec).padStart(2, '0');
+
             try {
-                const resp = await fetch(url, { headers });
+                const resp = await fetch(runsUrl, { headers });
                 const data = await resp.json();
                 const run = data.workflow_runs && data.workflow_runs[0];
 
-                if (!run) return;
+                if (!run) {
+                    btn.textContent = 'Waiting to start... (' + timeStr + ')';
+                    return;
+                }
 
-                const status = run.status;
-                const conclusion = run.conclusion;
-
-                if (status === 'completed') {
+                if (run.status === 'completed') {
                     clearInterval(poll);
-                    if (conclusion === 'success') {
+                    if (run.conclusion === 'success') {
                         btn.textContent = 'Done! Reloading...';
-                        setTimeout(() => window.location.reload(), 2000);
+                        setTimeout(() => window.location.reload(), 3000);
                     } else {
                         btn.textContent = 'Update Standings';
                         btn.disabled = false;
-                        alert('Scraper finished with status: ' + conclusion + '\nCheck the Actions tab on GitHub for details.');
+                        alert('Scraper finished with status: ' + run.conclusion + '\nCheck the Actions tab on GitHub for details.');
                     }
-                } else {
-                    btn.textContent = 'Scraping... (' + Math.floor(attempts * 10 / 60) + 'm)';
+                    return;
                 }
-            } catch (e) { /* ignore poll errors */ }
+
+                // Get job steps for progress detail
+                let stepLabel = 'Working';
+                let playerProgress = '';
+
+                try {
+                    const jobsResp = await fetch(run.jobs_url, { headers });
+                    const jobsData = await jobsResp.json();
+                    const job = jobsData.jobs && jobsData.jobs[0];
+
+                    if (job && job.steps) {
+                        // Find the currently running step
+                        const activeStep = job.steps.find(s => s.status === 'in_progress');
+                        const completedSteps = job.steps.filter(s => s.status === 'completed');
+
+                        if (activeStep) {
+                            const matched = WORKFLOW_STEPS.find(ws => ws.name === activeStep.name);
+                            stepLabel = matched ? matched.label : activeStep.name;
+
+                            // Estimate player progress during scrape step
+                            if (activeStep.name === SCRAPE_STEP_NAME && activeStep.started_at) {
+                                const stepElapsed = (Date.now() - new Date(activeStep.started_at).getTime()) / 1000;
+                                const scrapeTime = Math.max(0, stepElapsed - SCRAPE_OVERHEAD);
+                                const estPlayers = Math.min(TOTAL_PLAYERS, Math.floor(scrapeTime / SECS_PER_PLAYER));
+                                playerProgress = ' (' + estPlayers + '/' + TOTAL_PLAYERS + ' players)';
+                            }
+                        } else if (completedSteps.length > 0) {
+                            stepLabel = 'Finishing up';
+                        }
+                    }
+                } catch (e) { /* jobs API may not be ready yet */ }
+
+                btn.textContent = stepLabel + playerProgress + ' - ' + timeStr;
+
+            } catch (e) {
+                btn.textContent = 'Updating... (' + timeStr + ')';
+            }
 
             if (attempts >= maxAttempts) {
                 clearInterval(poll);
@@ -218,7 +275,7 @@
                 btn.disabled = false;
                 alert('Timed out waiting for scraper. Check the Actions tab on GitHub.');
             }
-        }, 10000); // poll every 10 seconds
+        }, 8000); // poll every 8 seconds
     }
 
     function loadData() {

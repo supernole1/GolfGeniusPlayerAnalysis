@@ -129,11 +129,17 @@ main {
     color: var(--white);
     border: none;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     font-weight: 600;
     cursor: pointer;
     transition: background 0.2s;
     white-space: nowrap;
+    min-width: 160px;
+}
+
+.update-btn:disabled {
+    background: var(--green-light);
+    cursor: wait;
 }
 
 .update-btn:hover {
