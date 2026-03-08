@@ -1,7 +1,7 @@
 const PLAYER_DATA = {
   "ggid": "RUMBLERS",
   "league_name": "RBCC Rumblers",
-  "scraped_at": "2026-03-07T17:24:15-0600",
+  "scraped_at": "2026-03-07T18:07:38-0600",
   "player_count": 109,
   "purse_per_round": 15,
   "players": [
@@ -11,7 +11,8 @@ const PLAYER_DATA = {
       "money_display": "$833.39",
       "rounds_played": 59,
       "purse_entered": 885,
-      "purse_display": "$885.00"
+      "purse_display": "$885.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Timothy Watts",
@@ -19,7 +20,8 @@ const PLAYER_DATA = {
       "money_display": "$796.40",
       "rounds_played": 35,
       "purse_entered": 525,
-      "purse_display": "$525.00"
+      "purse_display": "$525.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Seth Olson",
@@ -27,7 +29,8 @@ const PLAYER_DATA = {
       "money_display": "$734.34",
       "rounds_played": 30,
       "purse_entered": 450,
-      "purse_display": "$450.00"
+      "purse_display": "$450.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Robert Watson",
@@ -35,7 +38,8 @@ const PLAYER_DATA = {
       "money_display": "$731.61",
       "rounds_played": 58,
       "purse_entered": 870,
-      "purse_display": "$870.00"
+      "purse_display": "$870.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Paul Palmer",
@@ -43,7 +47,8 @@ const PLAYER_DATA = {
       "money_display": "$719.22",
       "rounds_played": 36,
       "purse_entered": 540,
-      "purse_display": "$540.00"
+      "purse_display": "$540.00",
+      "last_played": "Feb 21, 2026"
     },
     {
       "name": "Hugh Rogers",
@@ -51,7 +56,8 @@ const PLAYER_DATA = {
       "money_display": "$695.62",
       "rounds_played": 44,
       "purse_entered": 660,
-      "purse_display": "$660.00"
+      "purse_display": "$660.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Scott Stewart",
@@ -59,7 +65,8 @@ const PLAYER_DATA = {
       "money_display": "$674.92",
       "rounds_played": 45,
       "purse_entered": 675,
-      "purse_display": "$675.00"
+      "purse_display": "$675.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Rusty Napier",
@@ -67,7 +74,8 @@ const PLAYER_DATA = {
       "money_display": "$567.59",
       "rounds_played": 21,
       "purse_entered": 315,
-      "purse_display": "$315.00"
+      "purse_display": "$315.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "William Meeboer",
@@ -75,7 +83,8 @@ const PLAYER_DATA = {
       "money_display": "$564.46",
       "rounds_played": 44,
       "purse_entered": 660,
-      "purse_display": "$660.00"
+      "purse_display": "$660.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Bruce Tipton",
@@ -83,7 +92,8 @@ const PLAYER_DATA = {
       "money_display": "$535.83",
       "rounds_played": 44,
       "purse_entered": 660,
-      "purse_display": "$660.00"
+      "purse_display": "$660.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Tony Cartwright",
@@ -91,7 +101,8 @@ const PLAYER_DATA = {
       "money_display": "$532.02",
       "rounds_played": 18,
       "purse_entered": 270,
-      "purse_display": "$270.00"
+      "purse_display": "$270.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Marcus Mader",
@@ -99,7 +110,8 @@ const PLAYER_DATA = {
       "money_display": "$530.36",
       "rounds_played": 32,
       "purse_entered": 480,
-      "purse_display": "$480.00"
+      "purse_display": "$480.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Eric North",
@@ -107,7 +119,8 @@ const PLAYER_DATA = {
       "money_display": "$513.14",
       "rounds_played": 22,
       "purse_entered": 330,
-      "purse_display": "$330.00"
+      "purse_display": "$330.00",
+      "last_played": "Feb 13, 2026"
     },
     {
       "name": "Chris Stowers",
@@ -115,7 +128,8 @@ const PLAYER_DATA = {
       "money_display": "$450.00",
       "rounds_played": 16,
       "purse_entered": 240,
-      "purse_display": "$240.00"
+      "purse_display": "$240.00",
+      "last_played": "Jan 30, 2026"
     },
     {
       "name": "Jim Phillips",
@@ -123,7 +137,8 @@ const PLAYER_DATA = {
       "money_display": "$448.64",
       "rounds_played": 28,
       "purse_entered": 420,
-      "purse_display": "$420.00"
+      "purse_display": "$420.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Shane Frederic",
@@ -131,7 +146,8 @@ const PLAYER_DATA = {
       "money_display": "$444.68",
       "rounds_played": 22,
       "purse_entered": 330,
-      "purse_display": "$330.00"
+      "purse_display": "$330.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Bob Smith",
@@ -139,7 +155,8 @@ const PLAYER_DATA = {
       "money_display": "$432.97",
       "rounds_played": 28,
       "purse_entered": 420,
-      "purse_display": "$420.00"
+      "purse_display": "$420.00",
+      "last_played": "Feb 21, 2026"
     },
     {
       "name": "Robert Mann",
@@ -147,7 +164,8 @@ const PLAYER_DATA = {
       "money_display": "$423.03",
       "rounds_played": 30,
       "purse_entered": 450,
-      "purse_display": "$450.00"
+      "purse_display": "$450.00",
+      "last_played": "Feb 07, 2026"
     },
     {
       "name": "James Comparin",
@@ -155,7 +173,8 @@ const PLAYER_DATA = {
       "money_display": "$421.22",
       "rounds_played": 31,
       "purse_entered": 465,
-      "purse_display": "$465.00"
+      "purse_display": "$465.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Carlos Colon",
@@ -163,7 +182,8 @@ const PLAYER_DATA = {
       "money_display": "$386.54",
       "rounds_played": 28,
       "purse_entered": 420,
-      "purse_display": "$420.00"
+      "purse_display": "$420.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "David Marshall",
@@ -171,7 +191,8 @@ const PLAYER_DATA = {
       "money_display": "$385.08",
       "rounds_played": 44,
       "purse_entered": 660,
-      "purse_display": "$660.00"
+      "purse_display": "$660.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Bob Faia",
@@ -179,7 +200,8 @@ const PLAYER_DATA = {
       "money_display": "$379.17",
       "rounds_played": 25,
       "purse_entered": 375,
-      "purse_display": "$375.00"
+      "purse_display": "$375.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Joey Martinez",
@@ -187,7 +209,8 @@ const PLAYER_DATA = {
       "money_display": "$364.83",
       "rounds_played": 27,
       "purse_entered": 405,
-      "purse_display": "$405.00"
+      "purse_display": "$405.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Garry Holman",
@@ -195,7 +218,8 @@ const PLAYER_DATA = {
       "money_display": "$338.00",
       "rounds_played": 10,
       "purse_entered": 150,
-      "purse_display": "$150.00"
+      "purse_display": "$150.00",
+      "last_played": "Jan 30, 2026"
     },
     {
       "name": "Eric Huffmaster",
@@ -203,7 +227,8 @@ const PLAYER_DATA = {
       "money_display": "$328.02",
       "rounds_played": 19,
       "purse_entered": 285,
-      "purse_display": "$285.00"
+      "purse_display": "$285.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Fred Gross",
@@ -211,7 +236,8 @@ const PLAYER_DATA = {
       "money_display": "$322.69",
       "rounds_played": 29,
       "purse_entered": 435,
-      "purse_display": "$435.00"
+      "purse_display": "$435.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "JAMES Holstead",
@@ -219,7 +245,8 @@ const PLAYER_DATA = {
       "money_display": "$314.74",
       "rounds_played": 20,
       "purse_entered": 300,
-      "purse_display": "$300.00"
+      "purse_display": "$300.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Mark Brayton",
@@ -227,7 +254,8 @@ const PLAYER_DATA = {
       "money_display": "$303.47",
       "rounds_played": 13,
       "purse_entered": 195,
-      "purse_display": "$195.00"
+      "purse_display": "$195.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Chase Middleton",
@@ -235,7 +263,8 @@ const PLAYER_DATA = {
       "money_display": "$300.63",
       "rounds_played": 8,
       "purse_entered": 120,
-      "purse_display": "$120.00"
+      "purse_display": "$120.00",
+      "last_played": "Feb 21, 2026"
     },
     {
       "name": "Rick Folio",
@@ -243,7 +272,8 @@ const PLAYER_DATA = {
       "money_display": "$283.05",
       "rounds_played": 19,
       "purse_entered": 285,
-      "purse_display": "$285.00"
+      "purse_display": "$285.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Scott Mathewson",
@@ -251,7 +281,8 @@ const PLAYER_DATA = {
       "money_display": "$282.92",
       "rounds_played": 28,
       "purse_entered": 420,
-      "purse_display": "$420.00"
+      "purse_display": "$420.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Russ Storts",
@@ -259,7 +290,8 @@ const PLAYER_DATA = {
       "money_display": "$272.26",
       "rounds_played": 18,
       "purse_entered": 270,
-      "purse_display": "$270.00"
+      "purse_display": "$270.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Mike Jones",
@@ -267,7 +299,8 @@ const PLAYER_DATA = {
       "money_display": "$269.53",
       "rounds_played": 16,
       "purse_entered": 240,
-      "purse_display": "$240.00"
+      "purse_display": "$240.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "John Gonzalez",
@@ -275,7 +308,8 @@ const PLAYER_DATA = {
       "money_display": "$261.69",
       "rounds_played": 14,
       "purse_entered": 210,
-      "purse_display": "$210.00"
+      "purse_display": "$210.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Larry Martinez",
@@ -283,7 +317,8 @@ const PLAYER_DATA = {
       "money_display": "$238.34",
       "rounds_played": 9,
       "purse_entered": 135,
-      "purse_display": "$135.00"
+      "purse_display": "$135.00",
+      "last_played": "Feb 13, 2026"
     },
     {
       "name": "Alan Wood",
@@ -291,7 +326,8 @@ const PLAYER_DATA = {
       "money_display": "$231.00",
       "rounds_played": 17,
       "purse_entered": 255,
-      "purse_display": "$255.00"
+      "purse_display": "$255.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Jordan Orlando",
@@ -299,7 +335,8 @@ const PLAYER_DATA = {
       "money_display": "$230.00",
       "rounds_played": 17,
       "purse_entered": 255,
-      "purse_display": "$255.00"
+      "purse_display": "$255.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Dawson Marshall",
@@ -307,7 +344,8 @@ const PLAYER_DATA = {
       "money_display": "$219.19",
       "rounds_played": 13,
       "purse_entered": 195,
-      "purse_display": "$195.00"
+      "purse_display": "$195.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Alan Cornwell",
@@ -315,7 +353,8 @@ const PLAYER_DATA = {
       "money_display": "$217.48",
       "rounds_played": 16,
       "purse_entered": 240,
-      "purse_display": "$240.00"
+      "purse_display": "$240.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Bob Mathers",
@@ -323,7 +362,8 @@ const PLAYER_DATA = {
       "money_display": "$210.89",
       "rounds_played": 7,
       "purse_entered": 105,
-      "purse_display": "$105.00"
+      "purse_display": "$105.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Phillip Coty",
@@ -331,7 +371,8 @@ const PLAYER_DATA = {
       "money_display": "$208.39",
       "rounds_played": 9,
       "purse_entered": 135,
-      "purse_display": "$135.00"
+      "purse_display": "$135.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Dennis Barnett",
@@ -339,7 +380,8 @@ const PLAYER_DATA = {
       "money_display": "$200.30",
       "rounds_played": 21,
       "purse_entered": 315,
-      "purse_display": "$315.00"
+      "purse_display": "$315.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Eric Lemieux",
@@ -347,7 +389,8 @@ const PLAYER_DATA = {
       "money_display": "$197.83",
       "rounds_played": 18,
       "purse_entered": 270,
-      "purse_display": "$270.00"
+      "purse_display": "$270.00",
+      "last_played": "Feb 16, 2026"
     },
     {
       "name": "Brett Verzwyvelt",
@@ -355,7 +398,8 @@ const PLAYER_DATA = {
       "money_display": "$189.17",
       "rounds_played": 14,
       "purse_entered": 210,
-      "purse_display": "$210.00"
+      "purse_display": "$210.00",
+      "last_played": "Feb 06, 2026"
     },
     {
       "name": "Steve Essig",
@@ -363,7 +407,8 @@ const PLAYER_DATA = {
       "money_display": "$185.17",
       "rounds_played": 26,
       "purse_entered": 390,
-      "purse_display": "$390.00"
+      "purse_display": "$390.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "David Andrews",
@@ -371,7 +416,8 @@ const PLAYER_DATA = {
       "money_display": "$181.39",
       "rounds_played": 12,
       "purse_entered": 180,
-      "purse_display": "$180.00"
+      "purse_display": "$180.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Damian Tracy",
@@ -379,7 +425,8 @@ const PLAYER_DATA = {
       "money_display": "$179.67",
       "rounds_played": 16,
       "purse_entered": 240,
-      "purse_display": "$240.00"
+      "purse_display": "$240.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Kyle Paquette",
@@ -387,7 +434,8 @@ const PLAYER_DATA = {
       "money_display": "$176.05",
       "rounds_played": 10,
       "purse_entered": 150,
-      "purse_display": "$150.00"
+      "purse_display": "$150.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Dale Bridges",
@@ -395,7 +443,8 @@ const PLAYER_DATA = {
       "money_display": "$172.36",
       "rounds_played": 15,
       "purse_entered": 225,
-      "purse_display": "$225.00"
+      "purse_display": "$225.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Joe Fagundes",
@@ -403,7 +452,8 @@ const PLAYER_DATA = {
       "money_display": "$159.11",
       "rounds_played": 14,
       "purse_entered": 210,
-      "purse_display": "$210.00"
+      "purse_display": "$210.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Jay Fisher",
@@ -411,7 +461,8 @@ const PLAYER_DATA = {
       "money_display": "$157.67",
       "rounds_played": 25,
       "purse_entered": 375,
-      "purse_display": "$375.00"
+      "purse_display": "$375.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Rodney Lewis",
@@ -419,7 +470,8 @@ const PLAYER_DATA = {
       "money_display": "$148.33",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Dec 26, 2025"
     },
     {
       "name": "Patrick Poate",
@@ -427,7 +479,8 @@ const PLAYER_DATA = {
       "money_display": "$144.38",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Feb 16, 2026"
     },
     {
       "name": "Tim Parsons",
@@ -435,7 +488,8 @@ const PLAYER_DATA = {
       "money_display": "$140.91",
       "rounds_played": 26,
       "purse_entered": 390,
-      "purse_display": "$390.00"
+      "purse_display": "$390.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Clark Norton",
@@ -443,7 +497,8 @@ const PLAYER_DATA = {
       "money_display": "$138.69",
       "rounds_played": 12,
       "purse_entered": 180,
-      "purse_display": "$180.00"
+      "purse_display": "$180.00",
+      "last_played": "Feb 21, 2026"
     },
     {
       "name": "Joseph Thomas",
@@ -451,7 +506,8 @@ const PLAYER_DATA = {
       "money_display": "$135.01",
       "rounds_played": 20,
       "purse_entered": 300,
-      "purse_display": "$300.00"
+      "purse_display": "$300.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Kevin Brumley",
@@ -459,7 +515,8 @@ const PLAYER_DATA = {
       "money_display": "$133.33",
       "rounds_played": 12,
       "purse_entered": 180,
-      "purse_display": "$180.00"
+      "purse_display": "$180.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Gerald Houge",
@@ -467,7 +524,8 @@ const PLAYER_DATA = {
       "money_display": "$130.84",
       "rounds_played": 15,
       "purse_entered": 225,
-      "purse_display": "$225.00"
+      "purse_display": "$225.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Mark Connelly",
@@ -475,7 +533,8 @@ const PLAYER_DATA = {
       "money_display": "$127.50",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Jan 02, 2026"
     },
     {
       "name": "James Mason",
@@ -483,7 +542,8 @@ const PLAYER_DATA = {
       "money_display": "$127.50",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Oct 11, 2025"
     },
     {
       "name": "Moses Eshkenazi",
@@ -491,7 +551,8 @@ const PLAYER_DATA = {
       "money_display": "$116.46",
       "rounds_played": 10,
       "purse_entered": 150,
-      "purse_display": "$150.00"
+      "purse_display": "$150.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Todd Boyle",
@@ -499,7 +560,8 @@ const PLAYER_DATA = {
       "money_display": "$115.00",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "David Hume",
@@ -507,7 +569,8 @@ const PLAYER_DATA = {
       "money_display": "$115.00",
       "rounds_played": 10,
       "purse_entered": 150,
-      "purse_display": "$150.00"
+      "purse_display": "$150.00",
+      "last_played": "Feb 13, 2026"
     },
     {
       "name": "Jay Gontarek",
@@ -515,7 +578,8 @@ const PLAYER_DATA = {
       "money_display": "$111.17",
       "rounds_played": 9,
       "purse_entered": 135,
-      "purse_display": "$135.00"
+      "purse_display": "$135.00",
+      "last_played": "Mar 01, 2026"
     },
     {
       "name": "Jeff Waits",
@@ -523,7 +587,8 @@ const PLAYER_DATA = {
       "money_display": "$109.29",
       "rounds_played": 16,
       "purse_entered": 240,
-      "purse_display": "$240.00"
+      "purse_display": "$240.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Nicholas Mohr",
@@ -531,7 +596,8 @@ const PLAYER_DATA = {
       "money_display": "$107.50",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Feb 06, 2026"
     },
     {
       "name": "Daniel Perales",
@@ -539,7 +605,8 @@ const PLAYER_DATA = {
       "money_display": "$93.93",
       "rounds_played": 7,
       "purse_entered": 105,
-      "purse_display": "$105.00"
+      "purse_display": "$105.00",
+      "last_played": "Jan 09, 2026"
     },
     {
       "name": "John Harte",
@@ -547,7 +614,8 @@ const PLAYER_DATA = {
       "money_display": "$91.25",
       "rounds_played": 7,
       "purse_entered": 105,
-      "purse_display": "$105.00"
+      "purse_display": "$105.00",
+      "last_played": "Feb 16, 2026"
     },
     {
       "name": "Timothy Braswell",
@@ -555,7 +623,8 @@ const PLAYER_DATA = {
       "money_display": "$87.00",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Feb 16, 2026"
     },
     {
       "name": "Robert Champion",
@@ -563,7 +632,8 @@ const PLAYER_DATA = {
       "money_display": "$80.16",
       "rounds_played": 11,
       "purse_entered": 165,
-      "purse_display": "$165.00"
+      "purse_display": "$165.00",
+      "last_played": "Nov 07, 2025"
     },
     {
       "name": "Greg Rackley",
@@ -571,7 +641,8 @@ const PLAYER_DATA = {
       "money_display": "$75.17",
       "rounds_played": 9,
       "purse_entered": 135,
-      "purse_display": "$135.00"
+      "purse_display": "$135.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Christain Sampson",
@@ -579,7 +650,8 @@ const PLAYER_DATA = {
       "money_display": "$72.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Sep 01, 2025"
     },
     {
       "name": "Gary Wittkopp",
@@ -587,7 +659,8 @@ const PLAYER_DATA = {
       "money_display": "$69.86",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Matthew Herndon",
@@ -595,7 +668,8 @@ const PLAYER_DATA = {
       "money_display": "$66.67",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Oct 02, 2025"
     },
     {
       "name": "Indio Balderrama",
@@ -603,7 +677,8 @@ const PLAYER_DATA = {
       "money_display": "$66.25",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Feb 15, 2026"
     },
     {
       "name": "Jamie Harrington",
@@ -611,7 +686,8 @@ const PLAYER_DATA = {
       "money_display": "$60.84",
       "rounds_played": 12,
       "purse_entered": 180,
-      "purse_display": "$180.00"
+      "purse_display": "$180.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "John Sheekley",
@@ -619,7 +695,8 @@ const PLAYER_DATA = {
       "money_display": "$56.88",
       "rounds_played": 8,
       "purse_entered": 120,
-      "purse_display": "$120.00"
+      "purse_display": "$120.00",
+      "last_played": "Nov 22, 2025"
     },
     {
       "name": "Christopher Sharrow",
@@ -627,7 +704,8 @@ const PLAYER_DATA = {
       "money_display": "$55.83",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Nov 21, 2025"
     },
     {
       "name": "Jason Smith",
@@ -635,7 +713,8 @@ const PLAYER_DATA = {
       "money_display": "$55.83",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Oct 10, 2025"
     },
     {
       "name": "Melvin Fitzpatrick",
@@ -643,7 +722,8 @@ const PLAYER_DATA = {
       "money_display": "$42.83",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Tyler Nekomoto",
@@ -651,7 +731,8 @@ const PLAYER_DATA = {
       "money_display": "$41.46",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Oct 13, 2025"
     },
     {
       "name": "Al Gardner",
@@ -659,7 +740,8 @@ const PLAYER_DATA = {
       "money_display": "$39.32",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Nov 08, 2025"
     },
     {
       "name": "Clifton Frazier",
@@ -667,7 +749,8 @@ const PLAYER_DATA = {
       "money_display": "$35.71",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Feb 07, 2026"
     },
     {
       "name": "Shawn Connelly",
@@ -675,7 +758,8 @@ const PLAYER_DATA = {
       "money_display": "$31.14",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Oct 18, 2025"
     },
     {
       "name": "Jim Alford",
@@ -683,7 +767,8 @@ const PLAYER_DATA = {
       "money_display": "$30.00",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Nov 07, 2025"
     },
     {
       "name": "Brad Coon",
@@ -691,7 +776,8 @@ const PLAYER_DATA = {
       "money_display": "$30.00",
       "rounds_played": 5,
       "purse_entered": 75,
-      "purse_display": "$75.00"
+      "purse_display": "$75.00",
+      "last_played": "Mar 01, 2026"
     },
     {
       "name": "Carvelle Jones",
@@ -699,7 +785,8 @@ const PLAYER_DATA = {
       "money_display": "$30.00",
       "rounds_played": 7,
       "purse_entered": 105,
-      "purse_display": "$105.00"
+      "purse_display": "$105.00",
+      "last_played": "Nov 22, 2025"
     },
     {
       "name": "Joe Nacchia",
@@ -707,7 +794,8 @@ const PLAYER_DATA = {
       "money_display": "$26.25",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Mar 07, 2026"
     },
     {
       "name": "Travis Smith",
@@ -715,7 +803,8 @@ const PLAYER_DATA = {
       "money_display": "$25.00",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Jan 01, 2026"
     },
     {
       "name": "Doug Robbins",
@@ -723,7 +812,8 @@ const PLAYER_DATA = {
       "money_display": "$24.17",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Feb 06, 2026"
     },
     {
       "name": "Chris Poate",
@@ -731,7 +821,8 @@ const PLAYER_DATA = {
       "money_display": "$22.50",
       "rounds_played": 6,
       "purse_entered": 90,
-      "purse_display": "$90.00"
+      "purse_display": "$90.00",
+      "last_played": "Feb 16, 2026"
     },
     {
       "name": "William Arnold",
@@ -739,7 +830,8 @@ const PLAYER_DATA = {
       "money_display": "$20.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Aug 15, 2025"
     },
     {
       "name": "william webb",
@@ -747,7 +839,8 @@ const PLAYER_DATA = {
       "money_display": "$20.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Nov 21, 2025"
     },
     {
       "name": "Bill Markowski",
@@ -755,7 +848,8 @@ const PLAYER_DATA = {
       "money_display": "$15.00",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Nov 28, 2025"
     },
     {
       "name": "Joe Par1",
@@ -763,7 +857,8 @@ const PLAYER_DATA = {
       "money_display": "$15.00",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Oct 26, 2025"
     },
     {
       "name": "Houston Myers",
@@ -771,7 +866,8 @@ const PLAYER_DATA = {
       "money_display": "$8.75",
       "rounds_played": 15,
       "purse_entered": 225,
-      "purse_display": "$225.00"
+      "purse_display": "$225.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "John Rickard",
@@ -779,7 +875,8 @@ const PLAYER_DATA = {
       "money_display": "$8.57",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Nov 29, 2025"
     },
     {
       "name": "Nick Newsted",
@@ -787,7 +884,8 @@ const PLAYER_DATA = {
       "money_display": "$7.50",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Dec 26, 2025"
     },
     {
       "name": "Mark Durkin",
@@ -795,7 +893,8 @@ const PLAYER_DATA = {
       "money_display": "$5.00",
       "rounds_played": 7,
       "purse_entered": 105,
-      "purse_display": "$105.00"
+      "purse_display": "$105.00",
+      "last_played": "Feb 06, 2026"
     },
     {
       "name": "Mike Flowers",
@@ -803,7 +902,8 @@ const PLAYER_DATA = {
       "money_display": "$3.33",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Sep 20, 2025"
     },
     {
       "name": "Kyle Roshong",
@@ -811,7 +911,8 @@ const PLAYER_DATA = {
       "money_display": "$2.50",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Nov 15, 2025"
     },
     {
       "name": "Brian Balcer",
@@ -819,7 +920,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Jan 19, 2026"
     },
     {
       "name": "Roger Bloor",
@@ -827,7 +929,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Feb 28, 2026"
     },
     {
       "name": "Scott Boston",
@@ -835,7 +938,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Aug 29, 2025"
     },
     {
       "name": "Trey Carroll",
@@ -843,7 +947,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Jan 10, 2026"
     },
     {
       "name": "Matthew Grove",
@@ -851,7 +956,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 4,
       "purse_entered": 60,
-      "purse_display": "$60.00"
+      "purse_display": "$60.00",
+      "last_played": "Nov 21, 2025"
     },
     {
       "name": "Skip Lockwood",
@@ -859,7 +965,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 2,
       "purse_entered": 30,
-      "purse_display": "$30.00"
+      "purse_display": "$30.00",
+      "last_played": "Mar 06, 2026"
     },
     {
       "name": "Hunter Myers",
@@ -867,7 +974,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 1,
       "purse_entered": 15,
-      "purse_display": "$15.00"
+      "purse_display": "$15.00",
+      "last_played": "Oct 24, 2025"
     },
     {
       "name": "David Thompson",
@@ -875,7 +983,8 @@ const PLAYER_DATA = {
       "money_display": "$0.00",
       "rounds_played": 3,
       "purse_entered": 45,
-      "purse_display": "$45.00"
+      "purse_display": "$45.00",
+      "last_played": "Aug 29, 2025"
     }
   ]
 };
