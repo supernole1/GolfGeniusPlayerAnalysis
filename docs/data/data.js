@@ -1,7 +1,7 @@
 const PLAYER_DATA = {
   "ggid": "RUMBLERS",
   "league_name": "RBCC Rumblers",
-  "scraped_at": "2026-04-03T21:19:04-0500",
+  "scraped_at": "2026-04-04T07:24:18-0500",
   "player_count": 452,
   "purse_per_round": 15,
   "players": [
