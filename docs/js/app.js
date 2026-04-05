@@ -31,12 +31,26 @@
             : '--';
     }
 
+    function parseLastPlayed(s) {
+        if (!s) return 0;
+        const parts = s.split('/');
+        if (parts.length === 3) return new Date(parts[2], parts[0] - 1, parts[1]).getTime();
+        return 0;
+    }
+
     function sortPlayers(players) {
         const sorted = [...players];
         sorted.sort((a, b) => {
+            if (sortCol === 'rank') return 0;
+            if (sortCol === 'last_played') {
+                const va = parseLastPlayed(a.last_played);
+                const vb = parseLastPlayed(b.last_played);
+                if (va < vb) return sortDir === 'asc' ? -1 : 1;
+                if (va > vb) return sortDir === 'asc' ? 1 : -1;
+                return 0;
+            }
             let va = a[sortCol];
             let vb = b[sortCol];
-            if (sortCol === 'rank') return 0; // rank is just row number
             if (typeof va === 'string') {
                 va = va.toLowerCase();
                 vb = vb.toLowerCase();
@@ -67,10 +81,11 @@
             const netClass = net >= 0 ? 'net-positive' : 'net-negative';
             return `<tr>
                 <td>${i + 1}</td>
-                <td>${escapeHtml(p.name)}</td>
+                <td><span class="player-name-link" data-name="${escapeHtml(p.name)}">${escapeHtml(p.name)}</span></td>
                 <td>${escapeHtml(p.money_display || formatMoney(p.money))}</td>
                 <td>${p.rounds_played}</td>
                 <td>${escapeHtml(p.purse_display || formatMoney(p.purse_entered))}</td>
+                <td>${escapeHtml(p.last_played || '')}</td>
                 <td class="${netClass}">${formatMoney(net)}</td>
             </tr>`;
         }).join('');
@@ -100,7 +115,7 @@
                     sortDir = sortDir === 'asc' ? 'desc' : 'asc';
                 } else {
                     sortCol = col;
-                    sortDir = col === 'name' ? 'asc' : 'desc';
+                    sortDir = col === 'name' ? 'asc' : 'desc';  // last_played desc = most recent first
                 }
                 filterAndRender();
             });
@@ -279,6 +294,107 @@
         }, 8000); // poll every 8 seconds
     }
 
+    function showPlayerModal(playerName) {
+        const player = allPlayers.find(p => p.name === playerName);
+        if (!player) return;
+
+        $('#modal-player-name').textContent = player.name;
+
+        const net = player.money - player.purse_entered;
+        const netValClass = net >= 0 ? '' : 'net-negative';
+
+        let html = `<div class="modal-summary">
+            <div class="modal-summary-card">
+                <div class="val">${escapeHtml(player.money_display || formatMoney(player.money))}</div>
+                <div class="lbl">Money Won</div>
+            </div>
+            <div class="modal-summary-card">
+                <div class="val">${escapeHtml(player.purse_display || formatMoney(player.purse_entered))}</div>
+                <div class="lbl">Purse Entered</div>
+            </div>
+            <div class="modal-summary-card">
+                <div class="val ${netValClass}">${formatMoney(net)}</div>
+                <div class="lbl">Net</div>
+            </div>
+        </div>`;
+
+        const rounds = player.rounds || [];
+
+        if (rounds.length === 0) {
+            html += `<div class="modal-no-data">Per-round data not available.<br>Click <strong>Update Standings</strong> to scrape detailed round history.</div>`;
+        } else {
+            const hasGross = rounds.some(r => r.gross && r.gross.trim() !== '');
+            const hasNet   = rounds.some(r => r.net   && r.net.trim()   !== '');
+            const hasMoney = rounds.some(r => r.money && r.money.trim() !== '');
+
+            html += `<div class="table-container"><table>
+                <thead><tr>
+                    <th style="text-align:center">#</th>
+                    <th>Date</th>
+                    ${hasGross ? '<th style="text-align:right">Gross</th>' : ''}
+                    ${hasNet   ? '<th style="text-align:right">Net Score</th>' : ''}
+                    ${hasMoney ? '<th style="text-align:right">Won</th>' : ''}
+                    <th style="text-align:right">Entry</th>
+                    ${hasMoney ? '<th style="text-align:right">Rd Net</th>' : ''}
+                </tr></thead>
+                <tbody>`;
+
+            let totalWon = 0;
+
+            rounds.forEach((r, i) => {
+                const moneyNum = r.money ? parseFloat(r.money.replace(/[^0-9.-]/g, '')) : NaN;
+                const rdNet = !isNaN(moneyNum) ? moneyNum - 15 : NaN;
+                totalWon += isNaN(moneyNum) ? 0 : moneyNum;
+                const rdNetClass = !isNaN(rdNet) ? (rdNet >= 0 ? 'net-positive' : 'net-negative') : '';
+
+                html += `<tr>
+                    <td style="text-align:center;color:var(--gray)">${i + 1}</td>
+                    <td>${escapeHtml(r.date || '')}</td>
+                    ${hasGross ? `<td style="text-align:right">${escapeHtml(r.gross || '')}</td>` : ''}
+                    ${hasNet   ? `<td style="text-align:right">${escapeHtml(r.net   || '')}</td>` : ''}
+                    ${hasMoney ? `<td style="text-align:right">${escapeHtml(r.money || '')}</td>` : ''}
+                    <td style="text-align:right">$15</td>
+                    ${hasMoney ? `<td style="text-align:right" class="${rdNetClass}">${isNaN(rdNet) ? '' : formatMoney(rdNet)}</td>` : ''}
+                </tr>`;
+            });
+
+            const totalEntry = rounds.length * 15;
+            const totalNet = player.money - totalEntry;
+            const totalNetStr = (totalNet >= 0 ? '' : '') + formatMoney(totalNet);
+
+            html += `</tbody>
+                <tfoot><tr>
+                    <td colspan="2" style="text-align:right">Total</td>
+                    ${hasGross ? '<td></td>' : ''}
+                    ${hasNet   ? '<td></td>' : ''}
+                    ${hasMoney ? `<td style="text-align:right">${formatMoney(player.money)}</td>` : ''}
+                    <td style="text-align:right">${formatMoney(totalEntry)}</td>
+                    ${hasMoney ? `<td style="text-align:right">${totalNetStr}</td>` : ''}
+                </tr></tfoot>
+            </table></div>`;
+        }
+
+        $('#modal-body').innerHTML = html;
+        $('#player-modal').style.display = 'flex';
+    }
+
+    function setupModal() {
+        const overlay = $('#player-modal');
+        overlay.addEventListener('click', (e) => {
+            if (e.target === overlay) overlay.style.display = 'none';
+        });
+        $('#modal-close').addEventListener('click', () => {
+            overlay.style.display = 'none';
+        });
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') overlay.style.display = 'none';
+        });
+        $('#player-tbody').addEventListener('click', (e) => {
+            const link = e.target.closest('.player-name-link');
+            if (link) showPlayerModal(link.dataset.name);
+        });
+    }
+
     function loadData() {
         if (typeof PLAYER_DATA === 'undefined') {
             $('#error').style.display = 'block';
@@ -295,7 +411,9 @@
             rounds_played: Number(p.rounds_played) || 0,
             purse_entered: Number(p.purse_entered) || 0,
             purse_display: p.purse_display || null,
-            net: (Number(p.money) || 0) - (Number(p.purse_entered) || 0)
+            last_played: p.last_played || '',
+            net: (Number(p.money) || 0) - (Number(p.purse_entered) || 0),
+            rounds: Array.isArray(p.rounds) ? p.rounds : []
         }));
 
         if (data.ggid) {
@@ -314,6 +432,7 @@
     document.addEventListener('DOMContentLoaded', () => {
         setupSort();
         setupSearch();
+        setupModal();
         setupUpdateButton();
         loadData();
     });

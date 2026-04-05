@@ -152,15 +152,117 @@ tryCatch({
       })()
     ")$result$value
 
-    fromJSON(detail)
+    info <- fromJSON(detail)
+    if (isTRUE(info$error)) return(info)
+
+    # Click the Detail tab to access round history
+    b$Runtime$evaluate("
+      (function() {
+        var links = document.querySelectorAll('a');
+        for (var i = 0; i < links.length; i++) {
+          if (links[i].textContent.trim().match(/^detail$/i)) {
+            links[i].click();
+            return 'clicked';
+          }
+        }
+        return 'not found';
+      })()
+    ")
+    Sys.sleep(1.5)
+
+    # Extract full detail table (headers + all rows)
+    detail_table_json <- b$Runtime$evaluate("
+      (function() {
+        var tables = document.querySelectorAll('table');
+        for (var t = 0; t < tables.length; t++) {
+          var ths = tables[t].querySelectorAll('th');
+          var headers = [];
+          for (var h = 0; h < ths.length; h++) {
+            headers.push(ths[h].textContent.trim());
+          }
+          var hasRound = headers.some(function(hdr) { return hdr.match(/^round$/i); });
+          if (hasRound) {
+            var rows = tables[t].querySelectorAll('tbody tr');
+            var rowsData = [];
+            for (var r = 0; r < rows.length; r++) {
+              var cells = rows[r].querySelectorAll('td');
+              var row = [];
+              for (var c = 0; c < cells.length; c++) {
+                row.push(cells[c].textContent.trim());
+              }
+              if (row.some(function(v) { return v.length > 0; })) {
+                rowsData.push(row);
+              }
+            }
+            return JSON.stringify({headers: headers, rows: rowsData});
+          }
+        }
+        return JSON.stringify({headers: [], rows: []});
+      })()
+    ")$result$value
+
+    tbl <- tryCatch(fromJSON(detail_table_json), error = function(e) list(headers = character(0), rows = list()))
+    headers <- as.character(unlist(tbl$headers))
+
+    # Identify column positions by header name
+    round_col <- which(grepl("^round$",    headers, ignore.case = TRUE))[1]
+    gross_col <- which(grepl("gross",      headers, ignore.case = TRUE))[1]
+    net_col   <- which(grepl("^net",       headers, ignore.case = TRUE))[1]
+    money_col <- which(grepl("money|earn", headers, ignore.case = TRUE))[1]
+
+    rounds_out <- list()
+    dates      <- character(0)
+
+    rows_data <- tbl$rows
+    if (!is.null(rows_data) && length(rows_data) > 0) {
+      if (is.matrix(rows_data) || is.data.frame(rows_data)) {
+        rows_data <- lapply(seq_len(nrow(rows_data)), function(i) as.character(unlist(rows_data[i, ])))
+      }
+      get_col <- function(rv, idx) {
+        if (length(idx) > 0 && !is.na(idx) && idx <= length(rv)) rv[idx] else ""
+      }
+      for (row in rows_data) {
+        rv <- as.character(unlist(row))
+        if (length(rv) == 0) next
+        date_val  <- get_col(rv, round_col)
+        gross_val <- get_col(rv, gross_col)
+        net_val   <- get_col(rv, net_col)
+        money_val <- get_col(rv, money_col)
+        if (nchar(trimws(date_val)) > 0) {
+          dates <- c(dates, date_val)
+          rounds_out <- c(rounds_out, list(list(
+            date  = date_val,
+            gross = gross_val,
+            net   = net_val,
+            money = money_val
+          )))
+        }
+      }
+    }
+
+    if (length(dates) == 0) {
+      info$last_played <- ""
+    } else {
+      parsed <- suppressWarnings(as.Date(dates, format = "%m/%d/%Y"))
+      if (any(!is.na(parsed))) {
+        info$last_played <- dates[which.max(parsed)]
+      } else {
+        info$last_played <- dates[length(dates)]
+      }
+    }
+
+    info$round_history <- rounds_out
+    info
   }
 
   players <- data.frame(
     name = character(0),
     money = numeric(0),
     rounds_played = integer(0),
+    last_played = character(0),
     stringsAsFactors = FALSE
   )
+  player_rounds_tracker <- list()  # Per-player round detail
   failed <- list()  # Track failed players for retry
 
   total <- nrow(player_urls)
@@ -182,17 +284,19 @@ tryCatch({
       money <- as.numeric(gsub("[^0-9.]", "", info$purse))
       rounds <- as.integer(info$rounds)
       full_name <- if (nchar(info$name) > 0) info$name else pname
+      last_played <- if (!is.null(info$last_played)) info$last_played else ""
       if (is.na(money)) money <- 0
       if (is.na(rounds)) rounds <- 0L
 
       players <- rbind(players, data.frame(
         name = full_name, money = money, rounds_played = rounds,
-        stringsAsFactors = FALSE
+        last_played = last_played, stringsAsFactors = FALSE
       ))
-      cat(sprintf("$%.2f (%d rounds)\n", money, rounds))
+      player_rounds_tracker[[full_name]] <- if (!is.null(info$round_history)) info$round_history else list()
+      cat(sprintf("$%.2f (%d rounds) last: %s\n", money, rounds, last_played))
 
     }, error = function(e) {
-      cat("ERROR - queued for retry\n")
+      cat("ERROR:", conditionMessage(e), "- queued for retry\n")
       failed[[length(failed) + 1]] <<- list(name = pname, url = purl)
     })
   }
@@ -222,17 +326,19 @@ tryCatch({
           money <- as.numeric(gsub("[^0-9.]", "", info$purse))
           rounds <- as.integer(info$rounds)
           full_name <- if (nchar(info$name) > 0) info$name else f$name
+          last_played <- if (!is.null(info$last_played)) info$last_played else ""
           if (is.na(money)) money <- 0
           if (is.na(rounds)) rounds <- 0L
 
           players <- rbind(players, data.frame(
             name = full_name, money = money, rounds_played = rounds,
-            stringsAsFactors = FALSE
+            last_played = last_played, stringsAsFactors = FALSE
           ))
-          cat(sprintf("$%.2f (%d rounds)\n", money, rounds))
+          player_rounds_tracker[[full_name]] <- if (!is.null(info$round_history)) info$round_history else list()
+          cat(sprintf("$%.2f (%d rounds) last: %s\n", money, rounds, last_played))
 
         }, error = function(e) {
-          cat("ERROR\n")
+          cat("ERROR:", conditionMessage(e), "\n")
           still_failed[[length(still_failed) + 1]] <<- f
         })
       }
@@ -263,13 +369,16 @@ tryCatch({
 
   # Build output
   player_list <- lapply(seq_len(nrow(players)), function(i) {
+    pname <- players$name[i]
     list(
-      name = players$name[i],
+      name = pname,
       money = players$money[i],
       money_display = sprintf("$%.2f", players$money[i]),
       rounds_played = players$rounds_played[i],
       purse_entered = players$purse_entered[i],
-      purse_display = sprintf("$%.2f", players$purse_entered[i])
+      purse_display = sprintf("$%.2f", players$purse_entered[i]),
+      last_played = players$last_played[i],
+      rounds = if (!is.null(player_rounds_tracker[[pname]])) player_rounds_tracker[[pname]] else list()
     )
   })
 
