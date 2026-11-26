@@ -1,0 +1,261 @@
+GolfGenius Player Money Scraper
+================================
+GGID: RUMBLERS 
+Output: C:/Users/dalma/OneDrive/Documents/GolfGeniusPlayerAnalysis/docs/data/data.js 
+
+Launching headless Chrome...
+named list()
+$result
+$result$type
+[1] "object"
+
+$result$className
+[1] "Navigator"
+
+$result$description
+[1] "Navigator"
+
+$result$objectId
+[1] "8654991184609958575.1.1"
+
+
+Navigating to https://www.golfgenius.com/ggid/RUMBLERS ...
+Clicking Player Statistics...
+  Result: clicked 
+Finding iframe...
+  Iframe: https://www.golfgenius.com/leagues/11870950312887994633/widgets/player_stats?page_id=11870953009456368126&shared=false 
+Extracting player links...
+  Found 113 players
+
+  [1/113] Alford ... $30.00 (4 rounds) last: Apr 03, 2026
+  [2/113] Andrews ... $181.39 (13 rounds) last: Mar 28, 2026
+  [3/113] Arnold, W ... $20.00 (1 rounds) last: Aug 15, 2025
+  [4/113] Balcer, B ... $0.00 (2 rounds) last: Jan 19, 2026
+  [5/113] Barnett, D ... $272.80 (24 rounds) last: Apr 03, 2026
+  [6/113] Bloor ... $0.00 (1 rounds) last: Feb 28, 2026
+  [7/113] Boston ... $0.00 (1 rounds) last: Aug 29, 2025
+  [8/113] Boyle, T ... $127.50 (4 rounds) last: Apr 03, 2026
+  [9/113] Braswell ... $87.00 (6 rounds) last: Feb 16, 2026
+  [10/113] Brayton ... $321.80 (14 rounds) last: Mar 14, 2026
+  [11/113] Brumley ... $151.66 (15 rounds) last: Apr 03, 2026
+  [12/113] Bubba ... $309.53 (19 rounds) last: Apr 04, 2026
+  [13/113] C Dog ... $864.22 (64 rounds) last: Apr 04, 2026
+  [14/113] Carroll ... $0.00 (1 rounds) last: Jan 10, 2026
+  [15/113] Champion ... $80.16 (13 rounds) last: Apr 04, 2026
+  [16/113] Chubbs ... $734.34 (31 rounds) last: Apr 03, 2026
+  [17/113] Colon ... $481.37 (33 rounds) last: Apr 04, 2026
+  [18/113] Comparin ... $536.22 (35 rounds) last: Apr 03, 2026
+  [19/113] Connelly, M ... $127.50 (2 rounds) last: Jan 02, 2026
+  [20/113] Connelly, S ... $31.14 (1 rounds) last: Oct 18, 2025
+  [21/113] Coon ... $41.00 (7 rounds) last: Apr 03, 2026
+  [22/113] Cornwell ... $217.48 (16 rounds) last: Mar 06, 2026
+  [23/113] Coty, P ... $208.39 (11 rounds) last: Mar 27, 2026
+  [24/113] Dale ... $251.94 (18 rounds) last: Apr 04, 2026
+  [25/113] Doc ... $140.54 (18 rounds) last: Mar 27, 2026
+  [26/113] Durkin ... $5.00 (7 rounds) last: Feb 06, 2026
+  [27/113] Eshkenazi ... $116.46 (10 rounds) last: Feb 28, 2026
+  [28/113] Essig ... $245.17 (29 rounds) last: Mar 28, 2026
+  [29/113] Fagundes ... $199.11 (18 rounds) last: Apr 03, 2026
+  [30/113] Faia ... $417.50 (28 rounds) last: Mar 28, 2026
+  [31/113] Fisher ... $177.67 (29 rounds) last: Apr 03, 2026
+  [32/113] Fitzpatrick ... $42.83 (6 rounds) last: Feb 28, 2026
+  [33/113] Flowers ... $3.33 (2 rounds) last: Sep 20, 2025
+  [34/113] Folio ... $317.22 (21 rounds) last: Apr 03, 2026
+  [35/113] Frazier ... $68.21 (5 rounds) last: Apr 04, 2026
+  [36/113] Frederic ... $516.76 (26 rounds) last: Apr 03, 2026
+  [37/113] Gardner ... $39.32 (2 rounds) last: Nov 08, 2025
+  [38/113] Gonzalez ... $281.69 (17 rounds) last: Apr 04, 2026
+  [39/113] Gross ... $342.69 (31 rounds) last: Mar 27, 2026
+  [40/113] Grove ... $0.00 (5 rounds) last: Mar 13, 2026
+  [41/113] Harrington ... $95.84 (15 rounds) last: Mar 27, 2026
+  [42/113] Harte ... $91.25 (7 rounds) last: Feb 16, 2026
+  [43/113] Herndon ... $66.67 (4 rounds) last: Oct 02, 2025
+  [44/113] Holman ... $388.00 (11 rounds) last: Apr 03, 2026
+  [45/113] Holstead, J ... $331.24 (21 rounds) last: Mar 27, 2026
+  [46/113] Huffmaster ... $379.69 (23 rounds) last: Apr 03, 2026
+  [47/113] Hume ... $115.00 (10 rounds) last: Feb 13, 2026
+  [48/113] Indio ... $66.25 (4 rounds) last: Feb 15, 2026
+  [49/113] JJG ... $158.67 (12 rounds) last: Apr 04, 2026
+  [50/113] Jones, C ... $30.00 (8 rounds) last: Mar 21, 2026
+  [51/113] Lemieux ... $219.08 (19 rounds) last: Mar 21, 2026
+  [52/113] Lewis ... $148.33 (6 rounds) last: Dec 26, 2025
+  [53/113] Lockwood ... $20.00 (3 rounds) last: Mar 13, 2026
+  [54/113] Mader ... $562.86 (36 rounds) last: Apr 04, 2026
+  [55/113] Mann ... $443.86 (32 rounds) last: Apr 04, 2026
+  [56/113] Markowski ... $15.00 (4 rounds) last: Apr 04, 2026
+  [57/113] Marshall, Dave ... $552.99 (50 rounds) last: Apr 04, 2026
+  [58/113] Marshall, Dawson ... $305.02 (17 rounds) last: Apr 04, 2026
+  [59/113] Martinez, J ... $410.83 (30 rounds) last: Mar 20, 2026
+  [60/113] Martinez, L ... $238.34 (9 rounds) last: Feb 13, 2026
+  [61/113] Mason ... $127.50 (3 rounds) last: Oct 11, 2025
+  [62/113] Mathers ... $291.39 (10 rounds) last: Apr 03, 2026
+  [63/113] Mathewson ... $332.75 (32 rounds) last: Apr 04, 2026
+  [64/113] McEachern ... $71.75 (1 rounds) last: Mar 27, 2026
+  [65/113] McNair ... $11.00 (1 rounds) last: Mar 15, 2026
+  [66/113] Meat ... $728.39 (26 rounds) last: Apr 03, 2026
+  [67/113] Meeboer ... $581.96 (47 rounds) last: Apr 04, 2026
+  [68/113] Middleton ... $358.96 (9 rounds) last: Mar 14, 2026
+  [69/113] Mohr ... $180.00 (7 rounds) last: Apr 03, 2026
+  [70/113] Myers, H ... $26.25 (17 rounds) last: Apr 04, 2026
+  [71/113] Myers, Hu ... $0.00 (1 rounds) last: Oct 24, 2025
+  [72/113] Nacchia ... $26.25 (2 rounds) last: Mar 07, 2026
+  [73/113] Napier, R ... $577.59 (24 rounds) last: Apr 03, 2026
+  [74/113] Nekomoto, T ... $41.46 (2 rounds) last: Oct 13, 2025
+  [75/113] Newsted ... $7.50 (1 rounds) last: Dec 26, 2025
+  [76/113] Norton ... $138.69 (12 rounds) last: Feb 21, 2026
+  [77/113] Orlando ... $230.00 (18 rounds) last: Mar 27, 2026
+  [78/113] Padre ... $279.59 (19 rounds) last: Apr 03, 2026
+  [79/113] Palmer ... $745.72 (40 rounds) last: Apr 04, 2026
+  [80/113] Paquette ... $176.05 (12 rounds) last: Mar 27, 2026
+  [81/113] Par1, J ... $26.25 (3 rounds) last: Mar 21, 2026
+  [82/113] Parsons ... $186.91 (31 rounds) last: Apr 03, 2026
+  [83/113] Perales ... $93.93 (7 rounds) last: Jan 09, 2026
+  [84/113] Phillips ... $485.97 (31 rounds) last: Apr 04, 2026
+  [85/113] Poate ... $54.17 (7 rounds) last: Apr 03, 2026
+  [86/113] Poate, P ... $144.38 (7 rounds) last: Apr 03, 2026
+  [87/113] Rackley ... $75.17 (9 rounds) last: Mar 06, 2026
+  [88/113] Rickard ... $8.57 (1 rounds) last: Nov 29, 2025
+  [89/113] Robbins ... $24.17 (4 rounds) last: Feb 06, 2026
+  [90/113] Rogers ... $715.62 (48 rounds) last: Apr 04, 2026
+  [91/113] Roshong ... $2.50 (4 rounds) last: Nov 15, 2025
+  [92/113] Sampson ... $72.00 (1 rounds) last: Sep 01, 2025
+  [93/113] Sharrow ... $94.16 (7 rounds) last: Apr 04, 2026
+  [94/113] Sheekley ... $56.88 (8 rounds) last: Nov 22, 2025
+  [95/113] Smith, B ... $432.97 (30 rounds) last: Apr 03, 2026
+  [96/113] Smith, J ... $55.83 (3 rounds) last: Oct 10, 2025
+  [97/113] Smith, T ... $25.00 (3 rounds) last: Jan 01, 2026
+  [98/113] Sparky ... $304.76 (20 rounds) last: Apr 04, 2026
+  [99/113] Stewart ... $747.42 (48 rounds) last: Apr 03, 2026
+  [100/113] Stout, N ... $36.25 (1 rounds) last: Mar 28, 2026
+  [101/113] Stowers ... $450.00 (17 rounds) last: Apr 03, 2026
+  [102/113] Thomas, J ... $180.01 (25 rounds) last: Apr 03, 2026
+  [103/113] Thompson ... $0.00 (4 rounds) last: Mar 20, 2026
+  [104/113] Timber ... $532.02 (21 rounds) last: Apr 04, 2026
+  [105/113] Tippy ... $535.83 (44 rounds) last: Mar 06, 2026
+  [106/113] Tracy, D ... $179.67 (18 rounds) last: Apr 04, 2026
+  [107/113] Tutin, M ... $0.00 (4 rounds) last: Mar 21, 2026
+  [108/113] Verzwyvelt ... $189.17 (16 rounds) last: Apr 04, 2026
+  [109/113] Watson ... $839.11 (62 rounds) last: Apr 04, 2026
+  [110/113] Watts ... $827.40 (38 rounds) last: Mar 20, 2026
+  [111/113] Wittkopp ... $69.86 (2 rounds) last: Feb 28, 2026
+  [112/113] Wood ... $251.00 (20 rounds) last: Apr 03, 2026
+  [113/113] webb, w ... $20.00 (1 rounds) last: Nov 21, 2025
+
+================================
+Found 113 players
+
+  John Smith            Purse: $  864.22  Rounds:  64  Entered: $960.00  Net: $  -95.78
+  Robert Watson         Purse: $  839.11  Rounds:  62  Entered: $930.00  Net: $  -90.89
+  Timothy Watts         Purse: $  827.40  Rounds:  38  Entered: $570.00  Net: $  257.40
+  Scott Stewart         Purse: $  747.42  Rounds:  48  Entered: $720.00  Net: $   27.42
+  Paul Palmer           Purse: $  745.72  Rounds:  40  Entered: $600.00  Net: $  145.72
+  Seth Olson            Purse: $  734.34  Rounds:  31  Entered: $465.00  Net: $  269.34
+  Eric North            Purse: $  728.39  Rounds:  26  Entered: $390.00  Net: $  338.39
+  Hugh Rogers           Purse: $  715.62  Rounds:  48  Entered: $720.00  Net: $   -4.38
+  William Meeboer       Purse: $  581.96  Rounds:  47  Entered: $705.00  Net: $ -123.04
+  Rusty Napier          Purse: $  577.59  Rounds:  24  Entered: $360.00  Net: $  217.59
+  Marcus Mader          Purse: $  562.86  Rounds:  36  Entered: $540.00  Net: $   22.86
+  David Marshall        Purse: $  552.99  Rounds:  50  Entered: $750.00  Net: $ -197.01
+  James Comparin        Purse: $  536.22  Rounds:  35  Entered: $525.00  Net: $   11.22
+  Bruce Tipton          Purse: $  535.83  Rounds:  44  Entered: $660.00  Net: $ -124.17
+  Tony Cartwright       Purse: $  532.02  Rounds:  21  Entered: $315.00  Net: $  217.02
+  Shane Frederic        Purse: $  516.76  Rounds:  26  Entered: $390.00  Net: $  126.76
+  Jim Phillips          Purse: $  485.97  Rounds:  31  Entered: $465.00  Net: $   20.97
+  Carlos Colon          Purse: $  481.37  Rounds:  33  Entered: $495.00  Net: $  -13.63
+  Chris Stowers         Purse: $  450.00  Rounds:  17  Entered: $255.00  Net: $  195.00
+  Robert Mann           Purse: $  443.86  Rounds:  32  Entered: $480.00  Net: $  -36.14
+  Bob Smith             Purse: $  432.97  Rounds:  30  Entered: $450.00  Net: $  -17.03
+  Bob Faia              Purse: $  417.50  Rounds:  28  Entered: $420.00  Net: $   -2.50
+  Joey Martinez         Purse: $  410.83  Rounds:  30  Entered: $450.00  Net: $  -39.17
+  Garry Holman          Purse: $  388.00  Rounds:  11  Entered: $165.00  Net: $  223.00
+  Eric Huffmaster       Purse: $  379.69  Rounds:  23  Entered: $345.00  Net: $   34.69
+  Chase Middleton       Purse: $  358.96  Rounds:   9  Entered: $135.00  Net: $  223.96
+  Fred Gross            Purse: $  342.69  Rounds:  31  Entered: $465.00  Net: $ -122.31
+  Scott Mathewson       Purse: $  332.75  Rounds:  32  Entered: $480.00  Net: $ -147.25
+  JAMES Holstead        Purse: $  331.24  Rounds:  21  Entered: $315.00  Net: $   16.24
+  Mark Brayton          Purse: $  321.80  Rounds:  14  Entered: $210.00  Net: $  111.80
+  Rick Folio            Purse: $  317.22  Rounds:  21  Entered: $315.00  Net: $    2.22
+  Mike Jones            Purse: $  309.53  Rounds:  19  Entered: $285.00  Net: $   24.53
+  Dawson Marshall       Purse: $  305.02  Rounds:  17  Entered: $255.00  Net: $   50.02
+  Russ Storts           Purse: $  304.76  Rounds:  20  Entered: $300.00  Net: $    4.76
+  Bob Mathers           Purse: $  291.39  Rounds:  10  Entered: $150.00  Net: $  141.39
+  John Gonzalez         Purse: $  281.69  Rounds:  17  Entered: $255.00  Net: $   26.69
+  Gerald Houge          Purse: $  279.59  Rounds:  19  Entered: $285.00  Net: $   -5.41
+  Dennis Barnett        Purse: $  272.80  Rounds:  24  Entered: $360.00  Net: $  -87.20
+  Dale Bridges          Purse: $  251.94  Rounds:  18  Entered: $270.00  Net: $  -18.06
+  Alan Wood             Purse: $  251.00  Rounds:  20  Entered: $300.00  Net: $  -49.00
+  Steve Essig           Purse: $  245.17  Rounds:  29  Entered: $435.00  Net: $ -189.83
+  Larry Martinez        Purse: $  238.34  Rounds:   9  Entered: $135.00  Net: $  103.34
+  Jordan Orlando        Purse: $  230.00  Rounds:  18  Entered: $270.00  Net: $  -40.00
+  Eric Lemieux          Purse: $  219.08  Rounds:  19  Entered: $285.00  Net: $  -65.92
+  Alan Cornwell         Purse: $  217.48  Rounds:  16  Entered: $240.00  Net: $  -22.52
+  Phillip Coty          Purse: $  208.39  Rounds:  11  Entered: $165.00  Net: $   43.39
+  Joe Fagundes          Purse: $  199.11  Rounds:  18  Entered: $270.00  Net: $  -70.89
+  Brett Verzwyvelt      Purse: $  189.17  Rounds:  16  Entered: $240.00  Net: $  -50.83
+  Tim Parsons           Purse: $  186.91  Rounds:  31  Entered: $465.00  Net: $ -278.09
+  David Andrews         Purse: $  181.39  Rounds:  13  Entered: $195.00  Net: $  -13.61
+  Joseph Thomas         Purse: $  180.01  Rounds:  25  Entered: $375.00  Net: $ -194.99
+  Nicholas Mohr         Purse: $  180.00  Rounds:   7  Entered: $105.00  Net: $   75.00
+  Damian Tracy          Purse: $  179.67  Rounds:  18  Entered: $270.00  Net: $  -90.33
+  Jay Fisher            Purse: $  177.67  Rounds:  29  Entered: $435.00  Net: $ -257.33
+  Kyle Paquette         Purse: $  176.05  Rounds:  12  Entered: $180.00  Net: $   -3.95
+  Jay Gontarek          Purse: $  158.67  Rounds:  12  Entered: $180.00  Net: $  -21.33
+  Kevin Brumley         Purse: $  151.66  Rounds:  15  Entered: $225.00  Net: $  -73.34
+  Rodney Lewis          Purse: $  148.33  Rounds:   6  Entered: $ 90.00  Net: $   58.33
+  Patrick Poate         Purse: $  144.38  Rounds:   7  Entered: $105.00  Net: $   39.38
+  Jeff Waits            Purse: $  140.54  Rounds:  18  Entered: $270.00  Net: $ -129.46
+  Clark Norton          Purse: $  138.69  Rounds:  12  Entered: $180.00  Net: $  -41.31
+  Todd Boyle            Purse: $  127.50  Rounds:   4  Entered: $ 60.00  Net: $   67.50
+  Mark Connelly         Purse: $  127.50  Rounds:   2  Entered: $ 30.00  Net: $   97.50
+  James Mason           Purse: $  127.50  Rounds:   3  Entered: $ 45.00  Net: $   82.50
+  Moses Eshkenazi       Purse: $  116.46  Rounds:  10  Entered: $150.00  Net: $  -33.54
+  David Hume            Purse: $  115.00  Rounds:  10  Entered: $150.00  Net: $  -35.00
+  Jamie Harrington      Purse: $   95.84  Rounds:  15  Entered: $225.00  Net: $ -129.16
+  Christopher Sharrow   Purse: $   94.16  Rounds:   7  Entered: $105.00  Net: $  -10.84
+  Daniel Perales        Purse: $   93.93  Rounds:   7  Entered: $105.00  Net: $  -11.07
+  John Harte            Purse: $   91.25  Rounds:   7  Entered: $105.00  Net: $  -13.75
+  Timothy Braswell      Purse: $   87.00  Rounds:   6  Entered: $ 90.00  Net: $   -3.00
+  Robert Champion       Purse: $   80.16  Rounds:  13  Entered: $195.00  Net: $ -114.84
+  Greg Rackley          Purse: $   75.17  Rounds:   9  Entered: $135.00  Net: $  -59.83
+  Christain Sampson     Purse: $   72.00  Rounds:   1  Entered: $ 15.00  Net: $   57.00
+  Robert McEachern      Purse: $   71.75  Rounds:   1  Entered: $ 15.00  Net: $   56.75
+  Gary Wittkopp         Purse: $   69.86  Rounds:   2  Entered: $ 30.00  Net: $   39.86
+  Clifton Frazier       Purse: $   68.21  Rounds:   5  Entered: $ 75.00  Net: $   -6.79
+  Matthew Herndon       Purse: $   66.67  Rounds:   4  Entered: $ 60.00  Net: $    6.67
+  Indio Balderrama      Purse: $   66.25  Rounds:   4  Entered: $ 60.00  Net: $    6.25
+  John Sheekley         Purse: $   56.88  Rounds:   8  Entered: $120.00  Net: $  -63.12
+  Jason Smith           Purse: $   55.83  Rounds:   3  Entered: $ 45.00  Net: $   10.83
+  Chris Poate           Purse: $   54.17  Rounds:   7  Entered: $105.00  Net: $  -50.83
+  Melvin Fitzpatrick    Purse: $   42.83  Rounds:   6  Entered: $ 90.00  Net: $  -47.17
+  Tyler Nekomoto        Purse: $   41.46  Rounds:   2  Entered: $ 30.00  Net: $   11.46
+  Brad Coon             Purse: $   41.00  Rounds:   7  Entered: $105.00  Net: $  -64.00
+  Al Gardner            Purse: $   39.32  Rounds:   2  Entered: $ 30.00  Net: $    9.32
+  Nathaniel Stout       Purse: $   36.25  Rounds:   1  Entered: $ 15.00  Net: $   21.25
+  Shawn Connelly        Purse: $   31.14  Rounds:   1  Entered: $ 15.00  Net: $   16.14
+  Jim Alford            Purse: $   30.00  Rounds:   4  Entered: $ 60.00  Net: $  -30.00
+  Carvelle Jones        Purse: $   30.00  Rounds:   8  Entered: $120.00  Net: $  -90.00
+  Houston Myers         Purse: $   26.25  Rounds:  17  Entered: $255.00  Net: $ -228.75
+  Joe Nacchia           Purse: $   26.25  Rounds:   2  Entered: $ 30.00  Net: $   -3.75
+  Joe Par1              Purse: $   26.25  Rounds:   3  Entered: $ 45.00  Net: $  -18.75
+  Travis Smith          Purse: $   25.00  Rounds:   3  Entered: $ 45.00  Net: $  -20.00
+  Doug Robbins          Purse: $   24.17  Rounds:   4  Entered: $ 60.00  Net: $  -35.83
+  William Arnold        Purse: $   20.00  Rounds:   1  Entered: $ 15.00  Net: $    5.00
+  Skip Lockwood         Purse: $   20.00  Rounds:   3  Entered: $ 45.00  Net: $  -25.00
+  william webb          Purse: $   20.00  Rounds:   1  Entered: $ 15.00  Net: $    5.00
+  Bill Markowski        Purse: $   15.00  Rounds:   4  Entered: $ 60.00  Net: $  -45.00
+  Robert McNair         Purse: $   11.00  Rounds:   1  Entered: $ 15.00  Net: $   -4.00
+  John Rickard          Purse: $    8.57  Rounds:   1  Entered: $ 15.00  Net: $   -6.43
+  Nick Newsted          Purse: $    7.50  Rounds:   1  Entered: $ 15.00  Net: $   -7.50
+  Mark Durkin           Purse: $    5.00  Rounds:   7  Entered: $105.00  Net: $ -100.00
+  Mike Flowers          Purse: $    3.33  Rounds:   2  Entered: $ 30.00  Net: $  -26.67
+  Kyle Roshong          Purse: $    2.50  Rounds:   4  Entered: $ 60.00  Net: $  -57.50
+  Brian Balcer          Purse: $    0.00  Rounds:   2  Entered: $ 30.00  Net: $  -30.00
+  Roger Bloor           Purse: $    0.00  Rounds:   1  Entered: $ 15.00  Net: $  -15.00
+  Scott Boston          Purse: $    0.00  Rounds:   1  Entered: $ 15.00  Net: $  -15.00
+  Trey Carroll          Purse: $    0.00  Rounds:   1  Entered: $ 15.00  Net: $  -15.00
+  Matthew Grove         Purse: $    0.00  Rounds:   5  Entered: $ 75.00  Net: $  -75.00
+  Hunter Myers          Purse: $    0.00  Rounds:   1  Entered: $ 15.00  Net: $  -15.00
+  David Thompson        Purse: $    0.00  Rounds:   4  Entered: $ 60.00  Net: $  -60.00
+  Mike Tutin            Purse: $    0.00  Rounds:   4  Entered: $ 60.00  Net: $  -60.00
+
+Data saved to C:/Users/dalma/OneDrive/Documents/GolfGeniusPlayerAnalysis/docs/data/data.js 
